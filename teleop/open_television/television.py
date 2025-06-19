@@ -51,22 +51,22 @@ class TeleVision:
         try:
             self.head_matrix_shared[:] = event.value["camera"]["matrix"]
             self.aspect_shared.value = event.value['camera']['aspect']
-            print("HEAD MATRIX:\n", np.array(self.head_matrix))
+            # print("HEAD MATRIX:\n", np.array(self.head_matrix))
 
         except:
             pass
 
     async def on_hand_move(self, event, session, fps=60):
         try:
-            print("[DEBUG] HAND_MOVE received!")  # 放在最前面
+            # print("[DEBUG] HAND_MOVE received!")  # 放在最前面
             self.left_hand_shared[:] = event.value["leftHand"]
             self.right_hand_shared[:] = event.value["rightHand"]
             self.left_landmarks_shared[:] = np.array(event.value["leftLandmarks"]).flatten()
             self.right_landmarks_shared[:] = np.array(event.value["rightLandmarks"]).flatten()
 
                 # ✅ 加入打印调试信息
-            print("LEFT HAND MATRIX:\n", np.array(self.left_hand).round(3))
-            print("RIGHT HAND MATRIX:\n", np.array(self.right_hand).round(3))
+            # print("LEFT HAND MATRIX:\n", np.array(self.left_hand).round(3))
+            # print("RIGHT HAND MATRIX:\n", np.array(self.right_hand).round(3))
             
         except: 
             pass

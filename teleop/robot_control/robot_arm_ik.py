@@ -52,7 +52,7 @@ class G1_23_ArmIK:
                       self.reduced_robot.model.getJointId('left_elbow_yaw_joint'),
                       pin.SE3(np.eye(3),
                             #   np.array([0.15,0,0]).T),
-                              np.array([0,0,0]).T),
+                              np.array([0.15,0,0]).T),
                       pin.FrameType.OP_FRAME)
         )
         
@@ -62,14 +62,14 @@ class G1_23_ArmIK:
                       self.reduced_robot.model.getJointId('right_elbow_yaw_joint'),
                       pin.SE3(np.eye(3),
                             #   np.array([0.15,0,0]).T),
-                              np.array([0,0,0]).T),
+                              np.array([0.15,0,0]).T),
                       pin.FrameType.OP_FRAME)
         )
 
-        # for i in range(self.reduced_robot.model.nframes):
-        #     frame = self.reduced_robot.model.frames[i]
-        #     frame_id = self.reduced_robot.model.getFrameId(frame.name)
-        #     print(f"Frame ID: {frame_id}, Name: {frame.name}")
+        for i in range(self.reduced_robot.model.nframes):
+            frame = self.reduced_robot.model.frames[i]
+            frame_id = self.reduced_robot.model.getFrameId(frame.name)
+            print(f"Frame ID: {frame_id}, Name: {frame.name}")
         
         # Creating Casadi models and data for symbolic computing
         self.cmodel = cpin.Model(self.reduced_robot.model)
@@ -177,7 +177,7 @@ class G1_23_ArmIK:
                     )
                 )
     # If the robot arm is not the same size as your arm :)
-    def scale_arms(self, human_left_pose, human_right_pose, human_arm_length=0.60, robot_arm_length=0.75):
+    def scale_arms(self, human_left_pose, human_right_pose, human_arm_length=0.80, robot_arm_length=0.50):
         scale_factor = robot_arm_length / human_arm_length
         robot_left_pose = human_left_pose.copy()
         robot_right_pose = human_right_pose.copy()
@@ -190,7 +190,7 @@ class G1_23_ArmIK:
             self.init_data = current_lr_arm_motor_q
         self.opti.set_initial(self.var_q, self.init_data)
 
-        # left_wrist, right_wrist = self.scale_arms(left_wrist, right_wrist)
+        left_wrist, right_wrist = self.scale_arms(left_wrist, right_wrist)
         if self.Visualization:
             self.vis.viewer['L_ee_target'].set_transform(left_wrist)   # for visualization
             self.vis.viewer['R_ee_target'].set_transform(right_wrist)  # for visualization
@@ -248,7 +248,6 @@ class G1_23_ArmIK:
 if __name__ == "__main__":
 
     arm_ik = G1_23_ArmIK(Unit_Test = True, Visualization = True)
-
 
     # initial positon
     L_tf_target = pin.SE3(
