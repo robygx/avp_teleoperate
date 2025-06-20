@@ -1,7 +1,7 @@
 import time
 import asyncio
 from vuer import Vuer
-from vuer.schemas import ImageBackground, Hands
+from vuer.schemas import  Hands
 from multiprocessing import Array, Process, shared_memory
 import numpy as np
 
@@ -41,7 +41,7 @@ class TeleVision:
 
     async def spawn_hand_only(self, session, fps=60):
         # 👇 这一步是关键：告诉 XR 页面“我需要手势流数据”
-        session.upsert @ Hands(fps=fps, stream=True, key="hands", showLeft=False, showRight=False)
+        session.upsert @ Hands(fps=fps, stream=True, key="hands", showLeft=True, showRight=True)
 
         while True:
             # 不做任何图像更新，仅维持连接与 upsert 状态
