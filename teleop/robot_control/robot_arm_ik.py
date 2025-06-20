@@ -13,7 +13,7 @@ sys.path.append(parent2_dir)
 
 from teleop.utils.weighted_moving_filter import WeightedMovingFilter
         
-class G1_23_ArmIK:
+class Atom_23_ArmIK:
     def __init__(self, Unit_Test = False, Visualization = False):
         np.set_printoptions(precision=5, suppress=True, linewidth=200)
 
@@ -66,10 +66,10 @@ class G1_23_ArmIK:
                       pin.FrameType.OP_FRAME)
         )
 
-        for i in range(self.reduced_robot.model.nframes):
-            frame = self.reduced_robot.model.frames[i]
-            frame_id = self.reduced_robot.model.getFrameId(frame.name)
-            print(f"Frame ID: {frame_id}, Name: {frame.name}")
+        # for i in range(self.reduced_robot.model.nframes):
+        #     frame = self.reduced_robot.model.frames[i]
+        #     frame_id = self.reduced_robot.model.getFrameId(frame.name)
+        #     print(f"Frame ID: {frame_id}, Name: {frame.name}")
         
         # Creating Casadi models and data for symbolic computing
         self.cmodel = cpin.Model(self.reduced_robot.model)
@@ -247,7 +247,7 @@ class G1_23_ArmIK:
         
 if __name__ == "__main__":
 
-    arm_ik = G1_23_ArmIK(Unit_Test = True, Visualization = True)
+    arm_ik = Atom_23_ArmIK(Unit_Test = True, Visualization = True)
 
     # initial positon
     L_tf_target = pin.SE3(

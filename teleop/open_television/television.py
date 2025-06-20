@@ -58,7 +58,6 @@ class TeleVision:
 
     async def on_hand_move(self, event, session, fps=60):
         try:
-            # print("[DEBUG] HAND_MOVE received!")  # 放在最前面
             self.left_hand_shared[:] = event.value["leftHand"]
             self.right_hand_shared[:] = event.value["rightHand"]
             self.left_landmarks_shared[:] = np.array(event.value["leftLandmarks"]).flatten()
