@@ -144,6 +144,8 @@ class TeleVisionWrapper:
         # The origin of the coordinate of unitree_left_wrist is HEAD. So it is necessary to translate the origin of unitree_left_wrist from HEAD to WAIST.
         unitree_left_wrist[0, 3] +=0.18
         unitree_right_wrist[0,3] +=0.18
+        unitree_left_wrist[1, 3] +=0.10   # y轴正方向偏移0.10米（左手腕）
+        unitree_right_wrist[1,3] -=0.10   # y轴负方向偏移0.10米（右手腕）
         unitree_left_wrist[2, 3] +=0.45
         unitree_right_wrist[2,3] +=0.45
 

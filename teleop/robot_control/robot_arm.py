@@ -1050,7 +1050,7 @@ class H1_JointIndex(IntEnum):
     kLeftElbow = 19
 
 if __name__ == "__main__":
-    from robot_arm_ik import G1_29_ArmIK, G1_23_ArmIK, H1_2_ArmIK, H1_ArmIK
+    from robot_arm_ik import G1_23_ArmIK
     import pinocchio as pin 
 
     arm_ik = G1_29_ArmIK(Unit_Test = True, Visualization = False)
