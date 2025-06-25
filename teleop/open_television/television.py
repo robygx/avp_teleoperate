@@ -38,6 +38,15 @@ class TeleVision:
     
     def vuer_run(self):
         self.vuer.run()
+    # def vuer_run(self):
+    #     import asyncio
+    #     try:
+    #         asyncio.get_event_loop()
+    #     except RuntimeError:
+    #         loop = asyncio.new_event_loop()
+    #         asyncio.set_event_loop(loop)
+
+    #     self.vuer.run()
 
     async def spawn_hand_only(self, session, fps=60):
         # 👇 这一步是关键：告诉 XR 页面“我需要手势流数据”
