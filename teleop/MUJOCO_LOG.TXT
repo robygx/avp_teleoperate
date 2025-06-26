@@ -28,3 +28,9 @@ WARNING: Nan, Inf or huge value in QACC at DOF 9. The simulation is unstable. Ti
 Wed Jun 25 15:29:27 2025
 WARNING: Nan, Inf or huge value in QACC at DOF 1. The simulation is unstable. Time = 15.4600.
 
+Thu Jun 26 15:22:28 2025
+WARNING: mju_openResource: unknown file '/home/sun/avp_teleoperate/assets/Atom01_urdf/mjcf/atom02.xml'
+
+Thu Jun 26 15:23:16 2025
+WARNING: mju_openResource: unknown file '/home/sun/avp_teleoperate_mujoco/assets/Atom01_urdf/mjcf/atom02.xml'
+
